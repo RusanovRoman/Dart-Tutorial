@@ -25,7 +25,6 @@ where(bool test(E element)): возвращает коллекцию, элеме
 forEach(void action(E element)): вызывает для каждого элемента множества функцию action
  */
 
-
 void main () {
   var set = {"Tom", "Bob", "Sam"};
   print(set); // {Tom, Bob, Sam}
