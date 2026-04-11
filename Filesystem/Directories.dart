@@ -47,7 +47,7 @@ void GetInfoDir() async
 // Метод exists() возвращает true, если директория существует
 void FileExist() async
 {
-  print(await Directory("C:\"").exists());
+  print(await Directory("C:").exists());
   print(await Directory("somefolder").exists());
 }
 
@@ -65,6 +65,10 @@ void RenameDir() async
 void RemoveDir() async
 {
   var dir = Directory("work");
-  await dir.delete();
+  if(await dir.exists())
+    {
+      await dir.delete();
+    }
+
   print("${dir.path} deleted");
 }
