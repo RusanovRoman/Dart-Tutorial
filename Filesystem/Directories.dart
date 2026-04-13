@@ -30,7 +30,9 @@ void main()
 }
 
 
-// С помошью метода list() можно получить содержимое папки - вложенные папки и файлы
+/**
+ * Получение содержимого директории с помощью метода list().
+ */
 void GetInfoDir() async
 {
   var myDir = Directory("C:\\");
@@ -46,15 +48,20 @@ void GetInfoDir() async
   }
 }
 
-// Проверка существования директории
-// Метод exists() возвращает true, если директория существует
+
+/**
+ * Проверка существования директории.
+ * Метод exists() возвращает true, если директория существует.
+ */
 void FileExist() async
 {
   print(await Directory("C:").exists());
   print(await Directory("somefolder").exists());
 }
 
-// Для переименования директории применяется метод rename()
+/**
+ * Для переименования директории применяется метод rename().
+ */
 void RenameDir() async
 {
   // создаем директорию "hello"
@@ -64,7 +71,9 @@ void RenameDir() async
   print(new_dir.path);  // work
 }
 
-// Для удаления директории применяется метод delete()
+/**
+ * Для удаления директории применяется метод delete().
+ */
 void RemoveDir() async
 {
   var dir = Directory("work");
@@ -76,7 +85,9 @@ void RemoveDir() async
   print("${dir.path} deleted");
 }
 
-// Для получение данных папки применяется метод stat()
+/**
+ * Для получение данных папки применяется метод stat()
+ */
 void DirStats() async
 {
   var dir = Directory.current;
