@@ -18,16 +18,19 @@ void main()
   var myDirRec = Directory("hello1/temp");    // Если нужно создать каталог с подкаталогом
   myDirRec.create(recursive: true);           // дополнительно передаем пареметр
 
-  GetInfoDir();
+  GetInfoDir();         // Получение содержимого
 
-  FileExist();
+  FileExist();          // Проверка существования директории
 
-  RenameDir();
+  RenameDir();          // Переименование директории
 
-  RemoveDir();
+  RemoveDir();          // Удаление директории
+
+  DirStats();           // Получение статистики по директории
 }
 
-// Получение содержимого
+
+// С помошью метода list() можно получить содержимое папки - вложенные папки и файлы
 void GetInfoDir() async
 {
   var myDir = Directory("C:\\");
@@ -72,3 +75,15 @@ void RemoveDir() async
 
   print("${dir.path} deleted");
 }
+
+// Для получение данных папки применяется метод stat()
+void DirStats() async
+{
+  var dir = Directory.current;
+  var stat = await dir.stat();
+  print(dir.path);
+  print("Accessed datetime: ${stat.accessed}");
+  print("Modified datetime: ${stat.modified}");
+  print("Size: ${stat.size}");
+}
+
