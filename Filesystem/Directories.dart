@@ -11,28 +11,35 @@ void main()
   print(Directory.current);       // Получить путь к текущей папке
   print(Directory.systemTemp);    // Каталог для временных файлов в текущей системе
 
-  var myDir = Directory("hello");
+  String dirname = "hello";
+  CreateDir(dirname);   // Создание директории.
+
+  GetInfoDir();         // Получение содержимого директории.
+
+  FileExist();          // Проверка существования директории.
+
+  RenameDir();          // Переименование директории.
+
+  RemoveDir();          // Удаление директории.
+
+  DirStats();           // Получение статистики по директории.
+}
+
+/// Создание директории.
+/// Для создания директории применяется метод create().
+/// [dirname] - Имя директории.
+void CreateDir(String dirname) async
+{
+  var myDir = Directory(dirname);
   myDir.create();                 // Создание каталога
   print("Folder has been created");
 
   var myDirRec = Directory("hello1/temp");    // Если нужно создать каталог с подкаталогом
   myDirRec.create(recursive: true);           // дополнительно передаем пареметр
-
-  GetInfoDir();         // Получение содержимого
-
-  FileExist();          // Проверка существования директории
-
-  RenameDir();          // Переименование директории
-
-  RemoveDir();          // Удаление директории
-
-  DirStats();           // Получение статистики по директории
 }
 
 
-/**
- * Получение содержимого директории с помощью метода list().
- */
+/// Получение содержимого директории.
 void GetInfoDir() async
 {
   var myDir = Directory("C:\\");
@@ -49,19 +56,17 @@ void GetInfoDir() async
 }
 
 
-/**
- * Проверка существования директории.
- * Метод exists() возвращает true, если директория существует.
- */
+/// Проверка существования директории.
+/// Метод exists() возвращает true, если директория существует.
 void FileExist() async
 {
   print(await Directory("C:").exists());
   print(await Directory("somefolder").exists());
 }
 
-/**
- * Для переименования директории применяется метод rename().
- */
+
+/// Переименование директории.
+/// Для переименования директории применяется метод rename().
 void RenameDir() async
 {
   // создаем директорию "hello"
@@ -71,9 +76,9 @@ void RenameDir() async
   print(new_dir.path);  // work
 }
 
-/**
- * Для удаления директории применяется метод delete().
- */
+
+/// Удаление директории.
+/// Для удаления директории применяется метод delete().
 void RemoveDir() async
 {
   var dir = Directory("work");
@@ -85,9 +90,9 @@ void RemoveDir() async
   print("${dir.path} deleted");
 }
 
-/**
- * Для получение данных папки применяется метод stat()
- */
+
+/// Получение статистики по директории.
+/// Для получение данных папки применяется метод stat().
 void DirStats() async
 {
   var dir = Directory.current;
