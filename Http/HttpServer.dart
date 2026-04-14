@@ -15,6 +15,14 @@ void main() async
   {
 
     final response = request.response;    // получаем объект ответа
+
+    // Добавляем заголовки
+    response.headers.add(HttpHeaders.contentTypeHeader, "text/plain; charset=utf-8");
+    response.headers.add(HttpHeaders.hostHeader, "Home.com");
+    response.headers.add(HttpHeaders.dateHeader, DateTime.now());
+    response.headers.contentType= ContentType("text", "html");
+    response.write("<h1>Hello World!</h1><h3>Hello from Dart</h3>");
+
     response.write("Hello World!");       // отправляем в ответ строку "Hello World!"
     response.close();                     // закрываем и отправляем ответ
   });
