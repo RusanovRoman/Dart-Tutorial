@@ -14,7 +14,7 @@ void main() async
   await server.forEach((HttpRequest request)
   {
 
-    final response = request.response;    // получаем объект ответа
+    final response = request.response;    // Получаем объект ответа
 
     // Добавляем заголовки
     response.headers.add(HttpHeaders.contentTypeHeader, "text/plain; charset=utf-8");
